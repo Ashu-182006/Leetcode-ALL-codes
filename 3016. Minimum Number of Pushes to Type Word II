@@ -1,0 +1,19 @@
+class Solution:
+    def minimumPushes(self, words: str) -> int:
+        # w=set(words)
+        # k=len
+        # if len(w)<9:
+        #     s= len(w)
+        # elif len(w)<17:
+        #     s= (8+(len(w)-8)*2)
+        # elif len(w)<25:
+        #    s=(8+16+(len(w)-16)*3)
+        # else:
+        #     s=(8+16+24+(len(w)-24)*4)
+        s=Counter(words)
+        c=sorted(s.values(),reverse=True)
+        t=0
+        for i,j in enumerate(c):
+            m=(i//8)+1
+            t+=j*m
+        return t
