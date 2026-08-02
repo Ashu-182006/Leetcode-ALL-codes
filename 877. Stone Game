@@ -1,0 +1,13 @@
+class Solution:
+    def stoneGame(self, nums: List[int]) -> bool:
+        m={}
+        def md(l,r):
+            if l==r:
+                return nums[l]
+            if (l,r) in m:
+                return m[(l,r)]
+            p=nums[l]-md(l+1,r)
+            q=nums[r]-md(l,r-1)
+            m[(l,r)] = max(p,q)
+            return m[(l,r)]
+        return md(0,len(nums)-1)>=0
