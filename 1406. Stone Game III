@@ -1,0 +1,31 @@
+class Solution:
+    def stoneGameIII(self, stoneValue: list[int]) -> str:
+        n=len(stoneValue)
+        p=[0]*(n + 1) 
+        for i in range(n-1,-1,-1):
+            t=0
+            b=float('-inf')
+            for k in range(3):
+                if i+k<n:
+                    t+=stoneValue[i+k]
+                    b=max(b,t-p[i+k+1])
+            p[i]=b
+        if p[0]>0:
+            return "Alice"
+        elif p[0]<0:
+            return "Bob"
+        else:
+            return "Tie"
+        # s1, s2, s3 = 0, 0, 0
+        # tot = 0
+
+        # for value in reversed(stoneValue):
+        #     tot += value
+        #     s1, s2, s3 = tot-min(s1,s2,s3),s1,s2
+        # bob = tot - s1
+        # if s1 > bob:
+        #     return "Alice"
+        # if s1 < bob:
+        #     return "Bob"
+        # if s1 == bob:
+        #     return "Tie"
