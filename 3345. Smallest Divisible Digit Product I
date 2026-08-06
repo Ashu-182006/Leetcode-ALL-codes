@@ -1,0 +1,13 @@
+class Solution:
+    def smallestNumber(self, n: int, t: int) -> int:
+        i=1
+        while n>-1:
+            if n>99:
+                k=((n%10)*((n//10)%10)*((n//100)%10))
+            elif n>9:
+                k=((n%10)*((n//10)%10))
+            else:
+                k=n
+            if k%t==0:
+                return n
+            n+=i
