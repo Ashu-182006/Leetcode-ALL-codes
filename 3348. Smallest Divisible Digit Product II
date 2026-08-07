@@ -1,0 +1,30 @@
+class Solution:
+    def smallestNumber(self, num: str, t: int) -> str:
+        tmp=t
+        for p in [2,3,5,7]:
+            while tmp%p==0:
+                tmp//=p
+        if tmp>1:
+            return "-1"
+        n=len(num)
+        P,z=[t]*(n+1),n
+        for j,x in enumerate(num):
+            if x=='0':
+                z=j
+                break
+            P[j+1]=P[j]//math.gcd(P[j],int(x))
+        if z==n and P[n]==1:return num
+        for l in range(max(1,n-z),n+1):
+            idx=n-l
+            for i in range(int(num[idx])+1,10):
+                T,k,d=P[idx]//math.gcd(P[idx],i),[],9
+                while T>1 and d>1:
+                    if T%d==0:T//=d;k.append(str(d))
+                    else:d-=1
+                if T==1 and len(k)<l:
+                    return num[:idx]+str(i)+'1'*(l-1-len(k))+"".join(sorted(k))
+        k,d=[],9
+        while t>1:
+            while t%d==0:t//=d;k.append(str(d))
+            d-=1
+        return '1'*max(n+1-len(k),0)+"".join(sorted(k))
