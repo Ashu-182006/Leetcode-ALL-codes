@@ -1,0 +1,23 @@
+class Solution:
+    def validSequence(self, w1: str, w2: str) -> list[int]:
+        n=len(w1)
+        m=len(w2)
+        s=[0]*(n+1)
+        j=m-1
+        for i in range(n-1,-1,-1):
+            if j>=0 and w1[i]==w2[j]:j-=1
+            s[i]=m-1-j
+        a=[]
+        j=0
+        k=1
+        for i,c in enumerate(w1):
+            if j==m:
+                break
+            if c==w2[j]:
+                a.append(i);
+                j+=1
+            elif k and s[i+1]>=m-1-j:
+                a.append(i);
+                j+=1;
+                k=0
+        return a if len(a)==m else []
