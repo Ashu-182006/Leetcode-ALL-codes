@@ -1,0 +1,10 @@
+class Solution:
+    def stoneGameII(self, p: list[int]) -> int:
+        n=len(p)
+        s=[0]*(n+1)
+        for i in range(n-1,-1,-1):s[i]=s[i+1]+p[i]
+        @cache
+        def f(i,m):
+            if i+2*m>=n:return s[i]
+            return s[i]-min(f(i+x,max(m,x)) for x in range(1,2*m+1))
+        return f(0,1)
