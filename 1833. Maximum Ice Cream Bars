@@ -1,0 +1,9 @@
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        s=sorted(costs)
+        for i in range(len(s)):
+            if s[i]>coins:
+                return i
+            else:
+                coins=coins-s[i]
+        return len(s)
