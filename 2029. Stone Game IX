@@ -1,0 +1,11 @@
+class Solution:
+    def stoneGameIX(self, stones: List[int]) -> bool:
+        # if sum(stones)%3==0:
+        #     if len(stones)%2!=0:
+        #         return False
+        #     return True
+        # return False
+        c = collections.Counter(x % 3 for x in stones)
+        if c[0] % 2 == 0:
+            return c[1] > 0 and c[2] > 0
+        return abs(c[1] - c[2]) > 2
