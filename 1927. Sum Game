@@ -1,0 +1,13 @@
+class Solution:
+    def sumGame(self, num: str) -> bool:
+        n=len(num)
+        m=n//2
+        l=num[:m]
+        r=num[m:]
+        s=sum(int(x) for x in l if x!='?')
+        k=sum(int(x) for x in r if x!='?')
+        i=l.count('?')
+        j=r.count('?')
+        a=s-k
+        b=j-i
+        return a*2!=b*9
