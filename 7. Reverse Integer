@@ -1,0 +1,25 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        # s=x
+        # a=0
+        
+        # if x==0:
+        #     return 0
+        # elif x<10 and x>(-10):
+        #     return x
+        # if x<0:
+        #     x=(-1)*x
+        # while x%10==0:
+        #     x=x//10
+        # while x>0:
+        #     a=a*10+(x%10)
+        #     x=x//10
+        # if s<0 :
+        #    a= (-1)*a
+        # if a<-2**31 or a>2**31-1:
+        #     return 0
+        # else:
+        #     return a
+        s=-1 if x<0 else 1
+        r=s*int(str(abs(x))[::-1])
+        return r if -2**31 <= r < 2**31 else 0
