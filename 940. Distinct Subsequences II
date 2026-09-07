@@ -1,0 +1,6 @@
+class Solution:
+    def distinctSubseqII(self, s: str) -> int:
+        k=[0]*26
+        for i in s:
+            k[ord(i)-97]=(sum(k)+1)%((10**9)+7)
+        return sum(k)%((10**9)+7)
