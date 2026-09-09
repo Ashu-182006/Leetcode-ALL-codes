@@ -1,0 +1,8 @@
+class Solution:
+    def countCommas(self, n: int) -> int:
+        k=0
+        a=1000
+        while n>=a:
+            k+=n-a+1
+            a*=1000
+        return k
