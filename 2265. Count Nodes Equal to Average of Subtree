@@ -1,0 +1,15 @@
+class Solution:
+    def averageOfSubtree(self, root: TreeNode) -> int:
+        self.r=0
+        def f(k):
+            if not k:
+                return 0,0
+            i,j=f(k.left)
+            m,n=f(k.right)
+            c=k.val+i+m
+            p=1+j+n
+            if k.val==c//p:
+                self.r+=1
+            return c,p
+        f(root)
+        return self.r
