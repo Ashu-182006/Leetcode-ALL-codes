@@ -1,0 +1,8 @@
+class Solution:
+    def totalNumbers(self, digits: List[int]) -> int:
+        k=set()
+        for i in permutations(digits,3):
+            if i[0]!=0 and i[2]%2==0:
+                n=i[0]*100+i[1]*10+i[2]
+                k.add(n)
+        return len(k)
