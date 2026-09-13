@@ -1,0 +1,7 @@
+class Solution:
+    def largestOverlap(self, img1: List[List[int]], img2: List[List[int]]) -> i:
+        n=len(img1)
+        a=[(i,j) for i in range(n) for j in range(n) if img1[i][j]]
+        b=[(i,j) for i in range(n) for j in range(n) if img2[i][j]]
+        c=collections.Counter((m-i,n-j) for i,j in a for m,n in b)
+        return max(c.values(),default=0)
