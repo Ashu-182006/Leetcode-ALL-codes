@@ -1,0 +1,50 @@
+class Solution:
+    def maxNumOfSubstrings(self, s: str) -> list[str]:
+        # k=[]
+        # # for i in s:
+        # #     if s.count(i)==1:
+        # #         k.append(i)
+        # r=Counter(s)
+        # for i,j in r.items():
+        #     if j==1:
+        #         k.append(i)
+        #     else:
+        #         m=s.index(i)
+        #         v=0
+        #         for n in range(m,m+j):
+        #             if s[n]!=i:
+        #                 v=1
+        #                 break
+        #         if v==0:
+        #             k.append(s[m:m+j])
+        # if len(k)<1:
+        #     k.append(s)
+        # elif len(k)<2:
+            
+        #     k.append()
+        # return k
+        k=[]
+        r=Counter(s)
+        b=[]
+        for i in r.keys():
+            m=s.index(i)   
+            e=s.rindex(i) 
+            n=m
+            v=0            
+            while n<=e:
+                if s.index(s[n])<m:
+                    v=1
+                    break
+                e=max(e,s.rindex(s[n]))
+                n+=1
+            if v==0:
+                b.append((e,m))
+        b.sort()
+        p=-1
+        for i,j in b:
+            if j>p:
+                k.append(s[j:i+1])
+                p=i
+        if len(k)<1:
+            k.append(s)
+        return k
