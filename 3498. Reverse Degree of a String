@@ -1,0 +1,6 @@
+class Solution:
+    def reverseDegree(self, s: str) -> List:
+        k=0
+        for i,j in enumerate(s):
+            k+=((27-(ord(j)-96))*(i+1))
+        return k
