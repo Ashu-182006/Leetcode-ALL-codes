@@ -1,0 +1,4 @@
+class Solution:
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        s=[x for x in permutations(nums) ]
+        return s
