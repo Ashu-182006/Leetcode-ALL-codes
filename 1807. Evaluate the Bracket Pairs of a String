@@ -1,0 +1,17 @@
+class Solution:
+    def evaluate(self, s: str, kn: list[list[str]]) -> str:
+        t=dict(kn)
+        k=[]
+        i=0
+        while i<len(s):
+            if s[i]=='(':
+                j=s.find(')',i)
+                m=s[i+1:j]
+                k.append(t.get(m,"?"))
+                i=j+1
+            else:
+                k.append(s[i])
+                i+=1
+        return "".join(k)
+        # return s.replace('(','{d[').replace(')',']}').format(d=defaultdict(lambda:'?',d))
+        # return re.sub(r'\((\w+)\)',lambda m,d=dict(d):d.get(m[1],'?'),s)
