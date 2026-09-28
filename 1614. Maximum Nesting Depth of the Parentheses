@@ -1,0 +1,11 @@
+class Solution:
+    def maxDepth(self, s: str) -> int:
+        l=0
+        m=[]
+        for i in s:
+            if i=="(" :
+                l+=1
+            elif i==")":
+                l-=1
+            m.append(l) 
+        return max(m)       
