@@ -1,0 +1,7 @@
+s=int(input())
+r=s // 4
+if r%2==0:
+    c=s % 4
+else:
+    c=3-(s % 4)
+print(r,c)
