@@ -1,0 +1,13 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> list[str]:
+        r=[]
+        def backtrack(i,j,k):
+            if len(k)==n*2:
+                r.append(k)
+                return
+            if i<n:
+                backtrack(i+1,j,k+"(")
+            if j<i:
+                backtrack(i,j+1,k+")")
+        backtrack(0,0,"")
+        return r
