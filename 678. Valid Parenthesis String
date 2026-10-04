@@ -1,0 +1,23 @@
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        o=c=a=0
+        for i in s:
+            if i=="(":
+                o+=1
+            elif i==")":
+                c+=1
+            else:
+                a+=1
+            if c>o+a:
+                return False
+        o=c=a=0
+        for i in reversed(s):
+            if i=="(":
+                o+=1
+            elif i==")":
+                c+=1
+            else:
+                a+=1
+            if o>c+a:
+                return False
+        return True
