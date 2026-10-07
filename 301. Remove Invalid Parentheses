@@ -1,0 +1,28 @@
+class Solution:
+    def removeInvalidParentheses(self, s: str) -> list[str]:
+        def re(str):
+            c=0
+            for i in str:
+                if i=='(':
+                    c+=1
+                elif i==')':
+                    c-=1
+                if c<0:
+                    return False
+            return c==0
+        l={s}
+        while l:
+            r=[]
+            for i in l:
+                if re(i):
+                    r.append(i)
+            if r:
+                return r
+            n=set()
+            for j in l:
+                for i in range(len(j)):
+                    if j[i] in '()':
+                        k=j[:i]+j[i+1:]
+                        n.add(k)
+            l=n
+        return []
