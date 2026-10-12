@@ -1,0 +1,16 @@
+class Solution:
+    def maxSum(self, nums: List[int], k: int) -> int:
+        c=[0]*32
+        for j in nums:
+            for i in range(32):
+                if j&(1<<i):
+                    c[i]+=1
+        r=0
+        for _ in range(k):
+            v=0
+            for i in range(32):
+                if c[i]>0:
+                    v+=(1<<i) 
+                    c[i]-=1 
+            r=(r+v**2)%1000000007
+        return r
