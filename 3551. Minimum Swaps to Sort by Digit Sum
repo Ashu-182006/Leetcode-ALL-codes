@@ -1,0 +1,18 @@
+class Solution:
+    def minSwaps(self, nums: List[int]) -> int:
+        d=[sum(int(x) for x in str(v)) for v in nums]
+        z=list(zip(d, nums))
+        z.sort()
+        s=[v for t, v in z]
+        p={v: i for i, v in enumerate(nums)}
+        w=0
+        for i in range(len(nums)):
+            if nums[i]!=s[i]:
+                w+=1
+                c=s[i]
+                j=p[c]
+                nums[j]=nums[i]
+                p[nums[i]]=j
+                nums[i]=c
+                p[c]=i
+        return w
