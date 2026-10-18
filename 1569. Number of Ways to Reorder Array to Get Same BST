@@ -1,0 +1,11 @@
+class Solution:
+    def numOfWays(self, nums: list[int]) -> int:
+        def f(arr):
+            if len(arr)<=2:
+                return 1    
+            r=arr[0]
+            a=[x for x in arr if x<r]
+            b=[x for x in arr if x>r]
+            i=math.comb(len(a)+len(b),len(a))
+            return (i*f(a)*f(b))%1000000007
+        return(f(nums)-1)%1000000007
