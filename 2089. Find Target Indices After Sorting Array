@@ -1,0 +1,12 @@
+class Solution:
+    def targetIndices(self, nums: list[int], t: int) -> list[int]:
+        k=[]
+        if t not in nums:
+            return k
+        nums.sort()
+        for i in range(len(nums)):
+            if nums[i]==t:
+                k.append(i)
+            elif nums[i]>t:
+                return k
+        return k
