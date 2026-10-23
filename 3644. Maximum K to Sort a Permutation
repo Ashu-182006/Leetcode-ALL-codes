@@ -1,0 +1,8 @@
+class Solution(object):
+    def sortPermutation(self,a):
+        k=-1
+        for i,v in enumerate(a):
+            if i != v:
+                k=k&v
+        return 0 if k<0 else k
+        
