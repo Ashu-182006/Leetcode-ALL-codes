@@ -1,0 +1,11 @@
+class Solution:
+    def countDaysTogether(self, aA: str, lA: str, aB: str, lB: str) -> int:
+        s,e=max(aA,aB),min(lA,lB)
+        if s>e: 
+            return 0
+        m=[0,31,28,31,30,31,30,31,31,30,31,30,31]
+        m1,d1=int(s[:2]),int(s[3:])
+        m2,d2=int(e[:2]),int(e[3:])
+        if m1==m2:
+            return d2-d1+1
+        return (m[m1]-d1+1)+sum(m[m1+1:m2])+d2
