@@ -1,0 +1,16 @@
+class Solution:
+    def closedIsland(self, g: list[list[int]]) -> int:
+        r,c=len(g),len(g[0])
+        def f(i,j):
+            if g[i][j]:
+                return 1
+            if i==0 or i==r-1 or j==0 or j==c-1:
+                return 0
+            g[i][j]=1
+            return f(i-1,j)&f(i+1,j)&f(i,j-1)&f(i,j+1)
+        w=0
+        for i in range(1,r-1):
+            for j in range(1,c-1):
+                if g[i][j]==0:
+                    w+=f(i,j)
+        return w
