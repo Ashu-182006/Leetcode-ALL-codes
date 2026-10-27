@@ -1,0 +1,21 @@
+class Solution:
+    def createGrid(self, m: int, n: int) -> list[str]:
+        r=[]
+        if m==1:
+            a=["."]*n
+            r.append("".join(a))
+            return r
+        elif n==1:
+            while m:
+                r.append(".")
+                m-=1
+            return r
+        else:
+            r.append("".join(["."]*n))
+            m-=1
+            while m:
+                a=["#"]*(n-1)
+                a.append(".")
+                r.append("".join(a))
+                m-=1
+            return r
