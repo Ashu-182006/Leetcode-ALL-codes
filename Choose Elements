@@ -1,0 +1,17 @@
+import sys
+def solve():
+    n=sys.stdin.read().split()
+    a=int(n[0])
+    b=int(n[1])
+    s=[int(x) for x in n[2:2+a]]
+    s.sort(reverse=True)
+    r=0
+    for i in s:
+        if b>0:
+            b-=1
+            if i>0:
+                r+=i
+            
+    sys.stdout.write(str(r))
+if __name__=='__main__':
+    solve()
