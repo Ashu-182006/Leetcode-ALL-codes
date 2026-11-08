@@ -1,0 +1,10 @@
+class Solution:
+    def countServers(self, g: list[list[int]]) -> int:
+        a=[sum(i) for i in g]
+        b=[sum(i) for i in zip(*g)]
+        r=0
+        for i in range(len(g)):
+            for j in range(len(g[0])):
+                if g[i][j]==1 and (a[i]>1 or b[j]>1):
+                    r+=1
+        return r
