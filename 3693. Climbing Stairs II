@@ -1,0 +1,8 @@
+class Solution:
+    def climbStairs(self, n: int, costs: List[int]) -> int:
+        c=b=0
+        a=0
+        for i in costs:
+            k=min(a+i+1,b+i+4,c+i+9)
+            c,b,a=b,a,k
+        return a
