@@ -1,0 +1,13 @@
+class Solution:
+    def numOfSubarrays(self, arr: list[int]) -> int:
+        p=s=o=0
+        e=1
+        for x in arr:
+            s+=x
+            if s % 2:
+                p+=e
+                o+=1
+            else:
+                p+=o
+                e+=1
+        return p%(10**9+7)
