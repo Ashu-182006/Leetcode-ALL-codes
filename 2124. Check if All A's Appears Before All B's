@@ -1,0 +1,12 @@
+class Solution:
+    def checkString(self, s: str) -> bool:
+        a=s.count("a")
+        if a==0:
+            return True
+        for i in s:
+            if i=="a":
+                a-=1
+                if a==0:
+                    return True
+            else:
+                return False
