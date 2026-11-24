@@ -1,0 +1,10 @@
+class Solution:
+    def maxLength(self, nums: List[int]) -> int:
+        l=len(nums)
+        k=0
+        for i in range(l):
+            for j in range(i+1,l+1):
+                if gcd(*nums[i:j])*lcm(*nums[i:j])==prod(nums[i:j]):
+                    if j-i>k:
+                        k=j-i
+        return k
